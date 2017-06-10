@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign-Up/Login Form</title>
+    <link rel="stylesheet" href="/static/css/normalize.css">
+        <link rel="stylesheet" href="/static/css/formstyle.css">
+        <link rel="stylesheet" href="/static/css/jquery-ui.css" type="text/css" media="all" />
+  </head>
+  <body>
+  <!-- <div style="position: absolute;">
+    {% if messages %}
+    {% for msg in messages %}
+    {{msg.message}}
+    {% endfor %}
+    {% endif %}
+</div> -->
+<style>
+   /* The alert message box */
+.alert {
+    padding: 25px;
+    background-color: #1ab188; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.color_email{
+  border-color: red;
+}
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+</style>
+{% if messages %}
+ <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';" >&times;</span>
+     <b style="font-size:22px;">
+    {% for msg in messages %}
+    {{msg.message}}
+    {% endfor %}
+    </b>
+</div>
+{% endif %}
+<script>
+
+</script>
+    <div class="form">
+
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="signup">
+          <!--<h1>Sign Up for Free</h1>-->
+
+
+          <form action="" method="post">
+
+            {% csrf_token %}
+
+            <div class="field-wrap">
+            <input class="form-control" id="id_name" name="name" placeholder="Name" required="true" type="text" />
+          </div>
+
+
+            <div class="field-wrap">
+            <input class="form-email " id="email" name="email" placeholder="Email" required="true" type="text" />
+            </div>
+
+
+            <div class="field-wrap">
+            <input class="form-control" id="id_password" name="password" placeholder="Password" required="true" type="password" />
+            </div>
+
+            <div class="top-row">
+
+            <div class="field-wrap" style="height: 100%;">
+            <select class="year" id="id_year" name="year" placeholder="Year" required="true" style="background-color: transparent; width:95%;color:#a0b3b0;height:100%;font-size: 24px;padding: 1.5%;">
+<option value="" selected="selected">Year</option>
+<option value="1">First</option>
+<option value="2">Second</option>
+<option value="3">Third</option>
+<option value="4">Fourth</option>
+<option value="5">Fifth</option>
+</select>
+            </div>
+
+
+            <div class="field-wrap">
+            <select class="sex" id="id_sex" name="sex" placeholder="Sex" required="true" style="background-color: transparent; width:95%;margin-left:5%;color:#a0b3b0;height:100%;font-size: 24px;padding: 1.5%;">
+<option value="" selected="selected">Sex</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+<option value="Other">Other</option>
+</select>
+            </div>
+</div>
+
+            <div class="field-wrap">
+            <input class="form-control" id="id_college" name="college" placeholder="College" required="true" type="text" />
+            </div>
+
+
+            <div class="field-wrap">
+            <input class="sw" id="id_mobile_number" name="mobileNumber" placeholder="Mobile Number" required="true" type="number" style="display: block;"/>
+            </div>
+
+            <div class="field-wrap">
+            <input  name="referralCode" placeholder="Referral Code (optional)" type="text" />
+            </div>
+          <button type="submit" class="button form_submit button-block" name="register">Register</button>
+
+          </form>
+
+        </div>
+
+        <div id="login">
+          <h1>Welcome Back!</h1>
+
+          <form action="" method="POST">
+
+            {% csrf_token %}
+
+                <div class="field-wrap">
+                <input class="form-control" id="id_email" name="email" placeholder="Email" required="true" type="text" />
+                </div>
+
+                <div class="field-wrap">
+                <input class="form-control" id="id_password" name="password" placeholder="Password" required="true" type="password" />
+                </div>
+          <p class="forgot"><a href="/forgotPass">Forgot Password?</a></p>
+
+          <button class="button button-block" name="login" >Log In</button>
+
+          </form>
+
+        </div>
+
+      </div><!-- tab-content -->
+
+</div>
+<div class="footer" >
+    <p id="copyright@form">© Kashiyatra, IIT (BHU), Varanasi</p>
+  </div>
+<!-- /form -->
+    <script src='/static/js/jquery.min.js'></script>
+
+        <script src="/static/js/index.js"></script>
+        <script src="/static/js/form.js"></script>
+
+        <script src="/static/js/1.12.0jquery-ui.min.js"></script>
+
+         <script>
+           $( function() {
+             var availableTags = [
+               {% for clg in all_colleges %}
+                   "{{clg}}",
+               {%endfor%}
+             ];
+             $("#id_college").autocomplete({
+               source: availableTags
+             });
+           } );
+           // over write the default autocomplete function to match the option starting with term
+           $.ui.autocomplete.filter = function (array, term) {
+             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+             return $.grep(array, function (value) {
+               return matcher.test(value.label || value.value || value);
+             });
+           };
+         </script>
+
+
+
+  </body>
+</html>

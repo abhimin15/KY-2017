@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <!-- <link rel="stylesheet" href="/static/css/bootstrap.min.css"> -->
+
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    </head>
+<style>
+
+a:link{
+  text-decoration: none;
+}
+</style>
+
+  <body>
+    <div class="row" style="width:100%;">
+      <div class="container">
+
+    <nav id="accordion1" class="navbar navbar-default navbar-fixed-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                     <a href="/" class="navbar-brand">Kashiyatra 2017</a>
+
+                </div>
+                <div id="navbar" class="navbar-collapse collapse" >
+                    <ul class="menu nav navbar-nav pull-right list-inline" style="margin-right:11%;margin-top:0.5%">
+                      {% if choosen == False %}
+                      <li>
+                        <a href="/ca-register"><i class="fa fa-user"></i> Become Campus Ambassador</a>
+                      </li>
+                      {% endif %}
+
+
+                      <li>
+                        <button class="btn btn-default" type="button">
+                            <a href="/dashboard">
+                          <i class="fa fa-th"></i> Dashboard
+                        </a>
+                      </button>
+                      </li>
+                            <li>
+
+                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <i class="fa fa-cog"></i> Settings
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li role="separator" class="divider"></li>
+
+                                <li>
+                                  <a href="{% url 'kyusers:profile' %}"><i class="fa fa-user"></i> View profile</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                  <a href="{% url 'kyusers:changePass' %}"><i class="fa fa-key"></i> Change Password</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="{% url 'kyusers:logout' %}"><i class="fa fa-power-off"></i> Log out</a>
+                                </li>
+                              </ul>
+                          </li>
+                    </ul>
+                </div>
+
+        </nav>
+<br><br><br>
+ <div class="col-md-3" id="Cat">
+   <br><br>
+
+       <div class="panel panel-default" id="task-panel">
+         <div class="panel-heading"><strong>Event Categories</strong></div>
+           <div class="list-group tasks">
+
+  <div class="panel-group" id="accordion">
+    {% for parentevent in parentEvents %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse"  data-parent="#accordion" href="#collapse{{forloop.counter}}">{{ parentevent.categoryName }}</a>
+        </h4>
+      </div>
+      <div id="collapse{{forloop.counter}}" class="panel-collapse collapse">
+        <div class="panel-body">
+        <div class="list-group tasks">
+        {% for event in parentevent.event_set.all %}
+         <button class="list-group-item " id="{{event.eventName}}{{forloop.counter}}" onclick="myFunc(this)">
+           {{ event.eventName }}
+         </button>
+         {% endfor %}
+    </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+<br>
+    <a class="list-group-item " href="/contingent">
+      <h4>Contingent Registration</h4>
+        </a>
+
+</div>
+</div>
+  </div>
+   </div>
+       <div class="col-md-9" id="details-table">
+
+                   {% if messages %}
+                   {% for msg in messages %}
+
+                       <div class="alert alert-{{msg.tags}}">
+                   <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                     &times;</a>
+                   {{msg.message}}
+                   </div>
+                   {% endfor %}
+                   </ul>
+                   {% endif %}
+                   <div><br /><br />
+
+                     <div class="jumbotron">
+  What rhe fuyck
+                     </div>
+                     {% for parentevent in parentEvents %}
+                      {% for event in parentevent.event_set.all  %}
+                      <div class="jumbotron" id="{{event.eventName}}{{forloop.counter}}" style="display:none;">
+<div class="center-block" style="width:400px;">
+
+                          <h3 >{{event.eventName}}</h3>
+                        </div>
+                        {% autoescape off %}{{ event.eventDetails  }}{% endautoescape %}
+
+                        <br>
+                      <a class="btn btn-default teambutton" id="__{{event.eventId}}" href="/events/teamRegister/{{event.eventName}}"> Team Registration</a>
+                      {% if event.minMembers == 1 %}
+                      <button class="btn btn-default indbutton" id="{{event.eventId}}" onclick="indFunc(this,'/events/individualRegister/')">Individual Registration</button>
+                      {% endif %}
+                    </div>
+
+                      {%endfor%}
+                      {%endfor%}
+                   </div>
+
+         </div>
+       </div>
+
+ </div>
+
+     <script src="/static/js/jquery.min.js"></script>
+     <!-- <script src="/static/js/events.js"></script> -->
+     <script src="/static/js/bootstrap.min.js"></script>
+
+     <script>
+        function myFunc(elem){
+          var a=elem.getAttribute("id");
+          var elems=document.getElementsByClassName("jumbotron");
+          for (var i=0;i<elems.length;i+=1){
+            elems[i].style.display = 'none';
+            if(elems[i].getAttribute("id")==a)
+              elems[i].style.display="block";
+          }
+          // var elemid=elems.getElementById(a);
+          // elemid.style.display="block";
+
+        }
+
+function indFunc(elem,url){
+  eventId = elem.getAttribute("id");
+  console.log(eventId);
+  var kyId = "{{request.user.kyprofile.kyId}}";
+$.ajax({
+  url : url,
+  type: 'POST',
+  dataType: 'json',
+  data: {'eventId': eventId,
+          'kyId' : kyId,
+         'csrfmiddlewaretoken': '{{ csrf_token }}', },
+  context: elem,
+  success: function(data) {
+          console.log(data['status']);
+          if(data['status'] == 'registered'){
+
+            $(elem).removeClass('btn-default').addClass('btn-success');
+            $(elem).html("Registered!");
+            // console.log(eventId);
+            var p=((elem).getAttribute("id"));
+            // console.log(document.getElementsByClassName(p);
+            document.getElementById("__"+p).style.display="none";
+          }
+        }
+})
+.done(function() {
+  console.log("success");
+
+
+})
+.fail(function() {
+  console.log("error");
+})
+.always(function() {
+  console.log("complete");
+});
+}
+
+$(document).ready(function() {
+var elems=document.getElementsByClassName("indbutton");
+for (var i=0;i<elems.length;i+=1){
+  // var eventId = elems[i].getAttribute("id");
+  // console.log(eventId['status']);
+  indFunc(elems[i],'/regCheck/');
+}
+
+});
+
+$.ajax({
+  url: '/path/to/file',
+  type: 'default GET (Other values: POST)',
+  dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+  data: {param1: 'value1'}
+})
+.done(function() {
+  console.log("success");
+})
+.fail(function() {
+  console.log("error");
+})
+.always(function() {
+  console.log("complete");
+});
+
+</script>
+</body>
+</html>

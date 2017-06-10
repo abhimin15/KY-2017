@@ -1,0 +1,79 @@
+  <!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign-Up/Login Form</title>
+    <link rel="stylesheet" href="/static/css/normalize.css">
+        <link rel="stylesheet" href="/static/css/formstyle.css">
+  </head>
+  <body>
+
+<style>
+
+.alert {
+    padding: 25px;
+    background-color: #1ab188; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.color_email{
+  border-color: red;
+}
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+</style>
+{% if messages %}
+ <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';" >&times;</span>
+     <b style="font-size:22px;">
+    {{messages}}
+    </b>
+</div>
+{% endif %}
+<script>
+
+</script>
+    <div class="form">
+      <div class=""style="text-align:center">
+    <h3 style="font-size: 30px;color:#c2c2d6;">Reset Password</h3>
+    </div>
+          <form action="" method="post">
+            <div class="field-wrap">
+            <input class="form-email" id="email" name="email" placeholder="Email" required="true" type="text" />
+            </div>
+          <button type="submit" class="button button-block">submit</button>
+          </form>
+        </div>
+
+</div>
+<div class="footer" >
+    <p id="copyright@form">© Kashiyatra, IIT (BHU), Varanasi</p>
+  </div>
+    <script src='/static/js/jquery.min.js'></script>
+
+        <!-- <script src="/static/js/index.js"></script> -->
+        <!-- <script src="/static/js/form.js"></script> -->
+
+  </body>
+</html>

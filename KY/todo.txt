@@ -1,0 +1,4 @@
+#migrate
+#python eventdatapop.py
+event details to be populated.
+#python newmail.py

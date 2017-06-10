@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    </head>
+<style>
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+</style>
+
+  <body>
+    <div class="row" style="width:100%;">
+      <div class="container">
+
+    <nav id="accordion" class="navbar navbar-default navbar-fixed-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                     <a href="/" class="navbar-brand">Kashiyatra 2017</a>
+
+                </div>
+                <div id="navbar" class="navbar-collapse collapse" >
+                    <ul class="menu nav navbar-nav pull-right list-inline" style="margin-right:11%;margin-top:0.5%">
+                      {% if choosen == False %}
+                      <li>
+                          <a href="/ca-register"><i class="fa fa-user"></i> Become Campus Ambassador</a>
+                      </li>
+                      {% endif %}
+                      <li>
+                        <button class="btn btn-default" type="button">
+                            <a href="/dashboard">
+                          <i class="fa fa-th"></i> Dashboard
+                        </a>
+                      </button>
+                      </li>
+                      <li>
+
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          <i class="fa fa-cog"></i> Settings
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li role="separator" class="divider"></li>
+
+                          <li>
+                            <a class="active" href="{% url 'kyusers:profile' %}" ><i class=" fa fa-user"></i> View profile</a>
+                          </li>
+                          <li role="separator" class="divider"></li>
+                          <li>
+                            <a href="{% url 'kyusers:changePass' %}"><i class="fa fa-key"></i> Change Password</a>
+                          </li>
+                          <li role="separator" class="divider"></li>
+                          <li>
+                              <a href="{% url 'kyusers:logout' %}"><i class="fa fa-power-off"></i> Log out</a>
+                          </li>
+                        </ul>
+                    </li>
+                    </ul>
+                </div>
+
+        </nav>
+<br><br><br>
+ <div class="col-md-3">
+   <br><br>
+
+       <div class="panel panel-default" id="task-panel">
+         <div class="panel-heading"><strong></strong></div>
+           <div class="list-group tasks">
+
+            <a class="list-group-item " href="/events">
+              Events
+            </a>
+
+                <a class="list-group-item " href="/contingent">
+                  Contingent Registration      </a>
+                </div>
+              <!-- <a class="list-group-item " href="/contingent">
+                See your Registrations<span id="glydd" class="glyphicon " style="color:green"></span>
+                  </a> -->
+       </div>
+     </div>
+       <div class="col-md-7" id="details-table">
+
+                   {% if messages %}
+                   {% for msg in messages %}
+                       <div class="alert alert-{{msg.level_tag}}">
+                   <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                     &times;</a>
+                   {{msg.message}}
+                   </div>
+                   {% endfor %}
+                   </ul>
+                   {% endif %}
+
+              <table  class="table table-hover tabel-responsive">
+                <h3>Profile Details:</h3>
+                  <tr>
+                    <td>Name :</td>
+                    <td>{{request.user.first_name}}</td>
+                  </tr>
+                  <tr>
+                    {% if choosen == True %}
+                    <tr>
+                      <td>CA Id :</td>
+                      <td>{{kyprofile.caprofile.caId}}</td>
+                    </tr>
+                    <tr>
+                      {%endif%}
+                      <tr>
+                        <td>KY Id :</td>
+                        <td>{{kyprofile.kyId}}</td>
+                      </tr>
+                    <tr>
+                    <td>Year :</td>
+                    <td>{{kyprofile.year}}</td>
+                  </tr>
+                  <tr>
+                  <td>Sex :</td>
+                  <td>{{kyprofile.sex}}</td>
+                </tr>
+                  <tr>
+                    <td>College :</td>
+                    <td>{{kyprofile.college}}</td>
+                  </tr>
+                  <tr>
+                    <td>Mobile Number :</td>
+                    <td>{{kyprofile.mobileNumber}}</td>
+                  </tr>
+                  {% if choosen == True %}
+
+                  <tr>
+                    <td>WhatsApp Number :</td>
+                    <td>{{kyprofile.caprofile.whatsappNumber}}</td>
+                  </tr>
+                  <tr>
+                  <tr>
+                    <td>Postal Address :</td>
+                    <td>{{kyprofile.caprofile.postalAddress}}</td>
+                  </tr>
+                  <tr>
+                    <td>Pincode :</td>
+                    <td>{{kyprofile.caprofile.pincode}}</td>
+                  </tr>
+                  {% endif %}
+              </table>
+            <button id="edit-profile-btn" class="btn btn-default"><i class="fa fa-user"></i> Edit profile</button>
+          </div>
+
+         <div class="col-md-7" id="update-form" style="display: none">
+
+         <h3>Edit Profile :</h3>
+         <form  action="" method="post" >
+          {% csrf_token%}
+         <table class="table table-hover tabel-responsive">
+           {% for field in KyProfileEditForm %}
+           <tr>
+             <td>{{field.label}} :</td>
+             <td>{{field}}</td>
+           </tr>
+           {% endfor %}
+
+           {% if choosen ==  True%}
+           {% for field in CAProfileEditForm %}
+           <tr>
+             <td>{{field.label}} :</td>
+             <td>{{field}}</td>
+           </tr>
+           {% endfor %}
+           {% endif %}
+
+         </table>
+        <button type="submit" class="btn">Update</button>
+        <a id="close-update" class="btn btn-danger" style="margin-left:10px">Cancel</a>
+      </form>
+         </div>
+       </div>
+
+ </div>
+
+<!-- <br>
+<br>
+<br>
+<link rel="stylesheet" href="/static/css/profile.css">
+
+<link rel="stylesheet" href="/static/css/profile.css">
+
+<!-- =========================
+     FOOTER
+============================== -->
+<!--
+    <section class="copyright" style="position:absolute;bottom:0;width:80%;left:10%;background-color:transparent;">
+        <div class="copy_right_text">
+                       <p class="footer_content" >
+                       <span id="copyright_Title" style="color: black;"><b>©</b> IIT (BHU) VARANASI - Beta<br/><br/>Indian Institute of Technology (BHU), Varanasi, Lanka, Varanasi - 221005</span>
+                       <span id="sponsoredBy" style="color: black;">kashiyatra@iitbhu.ac.in<br/><br/>
+                        <a href="https://www.facebook.com/kashiyatra.IITBHU/" class="shr_link_ctnt">FACEBOOK</a> - <a href="https://twitter.com/ky_IITBHU/" class="shr_link_ctnt">TWITTER</a> - <a href="https://www.instagram.com/kashiyatra_iitbhu/" class="shr_link_ctnt">INSTAGRAM</a> - <a href="https://www.youtube.com/channel/UCJQCjxqqxdM3JlvKericaog" class="shr_link_ctnt">YOUTUBE
+                        <p id="share_token"></p>
+                        </span>
+                        </p>
+                    </div>
+
+
+        </div>
+     </section>  -->
+     <!-- Javascript -->
+     <script src="/static/js/jquery.min.js"></script>
+     <script src="/static/js/profile.js"></script>
+     <script src="/static/js/bootstrap.min.js"></script>
+
+</body>
+</html>

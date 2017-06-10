@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign-Up/Login Form</title>
+    <link rel="stylesheet" href="/static/css/normalize.css">
+        <link rel="stylesheet" href="/static/css/formstyle.css">
+        <link rel="stylesheet" href="/static/css/jquery-ui.css" type="text/css" media="all" />
+        <style media="screen">
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+        </style>
+  </head>
+  <body>
+    {% if messages %}
+    {% for msg in messages %}
+    {{msg.message}}
+    {% endfor %}
+    {% endif %}
+
+    <div class="form">
+
+      <h1 class="tab-group">
+        Register for Campus Ambassador
+      </h1>
+      <div class="tab-content">
+
+          <!--<h1>Sign Up for Free</h1>-->
+
+          <form action="" method="post">
+
+            {% csrf_token %}
+              {% for field in form %}
+              {{  form.non_field_errors }}
+
+              <div class="field-wrap">
+              {{ field }}
+              {{field.errors}}
+              </div>
+              {% endfor %}
+
+          <button type="submit" class="button button-block" name="register">Register</button>
+
+          </form>
+
+        </div>
+
+
+      </div><!-- tab-content -->
+
+</div>
+<div class="footer">
+    <p id="copyright@form">© Kashiyatra, IIT (BHU), Varanasi</p>
+  </div>
+<!-- /form -->
+    <script src='/static/js/jquery.min.js'></script>
+
+        <script src="/static/js/index.js"></script>
+
+  </body>
+</html>

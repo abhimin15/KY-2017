@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    </head>
+<style>
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}
+</style>
+
+  <body>
+    <div class="row" style="width:100%;">
+      <div class="container">
+
+    <nav id="accordion" class="navbar navbar-default navbar-fixed-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                     <a href="/" class="navbar-brand">Kashiyatra 2017</a>
+
+                </div>
+                <div id="navbar" class="navbar-collapse collapse" >
+                    <ul class="menu nav navbar-nav pull-right list-inline" style="margin-right:11%;margin-top:0.5%">
+                      {% if choosen == False %}
+                      <li>
+                          <a href="/ca-register"><i class="fa fa-user"></i> Become Campus Ambassador</a>
+                      </li>
+                      {% endif %}
+                      <li>
+                        <button class="btn btn-default" type="button">
+                            <a href="/dashboard">
+                          <i class="fa fa-th"></i> Dashboard
+                        </a>
+                      </button>
+                      </li>
+                      <li>
+
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          <i class="fa fa-cog"></i> Settings
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li role="separator" class="divider"></li>
+
+                          <li>
+                            <a href="{% url 'kyusers:profile' %}" ><i class="fa fa-user"></i> View profile</a>
+                          </li>
+                          <li role="separator" class="divider"></li>
+                          <li>
+                            <a href="{% url 'kyusers:changePass' %}"><i class="fa fa-key"></i> Change Password</a>
+                          </li>
+                          <li role="separator" class="divider"></li>
+                          <li>
+                              <a href="{% url 'kyusers:logout' %}"><i class="fa fa-power-off"></i> Log out</a>
+                          </li>
+                    </ul>
+                </div>
+
+        </nav>
+<br><br><br> <br><br>
+ <div class="col-md-3">
+
+       <div class="panel panel-default" id="task-panel">
+         <div class="panel-heading"><strong></strong></div>
+           <div class="list-group tasks">
+
+            <a class="list-group-item " href="/events">
+              Events<span id="glydd" class="glyphicon " style="color:green"></span>
+                </div></a>
+
+                <a class="list-group-item active" href="/contingent">
+                  Contingent Registration<span id="glydd" class="glyphicon " style="color:green"></span>
+                    </a>
+       </div>
+     </div>
+       <div class="col-md-5" id="details-table">
+
+
+
+             {% if messages %}
+             {% for msg in messages %}
+                 <div class="alert alert-{{msg.level_tag}}">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">
+               &times;</a>
+             {{msg.message}}
+             </div>
+             {% endfor %}
+             </ul>
+             {% endif %}
+
+          <div>
+            <p>
+             <h4>
+               Contingent Registration Form
+             </h4><br>
+           </p>
+           </div>
+
+             <div class="control-group col-xs-8" id="fields">
+                      <div class="controls">
+                          <form action="" method="post" role="form" autocomplete="off">
+                          {% csrf_token %}
+                            <div class=" input-group ">
+
+                              <label class="control-label" for="">Contingent Leader</label>
+                            <input class="form-control" name="leader" type="text" value="{{request.user.kyprofile.kyId}}" readonly placeholder="Contingent Leader's KY Id" />
+                          </div><br>
+                          <p>
+                          <label class="control-label" for="field1">Member details :</label>
+                                </p>
+                              <div class="entry input-group ">
+                                  <input class="form-control" name="fields[]" required="true" type="text" placeholder="Member's KY Id (KY-###-###)" />
+                                <span class="input-group-btn">
+                                      <button class="btn btn-success btn-add" type="button">
+                                          <span class="glyphicon glyphicon-plus"></span>
+                                      </button>
+                                  </span>
+                              </div>
+                      </div>
+                      <p><small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another member :)</small></p>
+
+                      <button type="submit" class="btn btn-default" name="register">Register</button>
+                    </form>
+                  </div><br>
+           </div>
+
+         </div>
+
+   </div>
+
+       <script src="/static/js/jquery.min.js"></script>
+       <!-- <script src="/static/js/events.js"></script> -->
+       <script src="/static/js/bootstrap.min.js"></script>
+  <script>
+  $(function()
+  {
+    $(document).on('click', '.btn-add', function(e)
+    {
+        e.preventDefault();
+
+        var controlForm = $('.controls form:first'),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add')
+            .removeClass('btn-add').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+            .html('<span class="glyphicon glyphicon-minus"></span>');
+    }).on('click', '.btn-remove', function(e)
+    {
+    $(this).parents('.entry:first').remove();
+
+    e.preventDefault();
+    return false;
+  });
+  });
+
+  </script>
+</body>
+</html>

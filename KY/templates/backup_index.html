@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kashiyatra 2017</title>
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:500,600,700,800,900,400,300' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Owl Carousel Assets -->
+    <link href="/static/css/owl.carousel.css" rel="stylesheet">
+    <link href="/static/css/owl.theme.css" rel="stylesheet">
+
+
+    <!-- Pixeden Icon Font -->
+    <link rel="stylesheet" href="/static/css/Pe-icon-7-stroke.css">
+
+    <!-- Font Awesome -->
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- PrettyPhoto -->
+    <link href="/static/css/prettyPhoto.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+    <!-- Style -->
+
+    <link href="/static/css/style.css" rel="stylesheet">
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="/static/css/responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/alphabet.js"></script>
+<!--
+ </script> --><!--
+  <script src="/static/js/MYSCRIPT.js"></script> -->
+
+<link rel="stylesheet" href="/static/css/indexstyle.css">
+<script src="/static/js/jquery.min.js" charset="utf-8"></script>
+</head>
+
+<body data-spy="scroll" data-target="#points" data-offset="10">
+    <a name="home"></a>
+
+    <!-- PRELOADER -->
+    <div class="spn_hol" style="display: block;">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+        <div id="load-text" style="position: absolute;top:45%;vertical-align:middle;text-align:center;font-size:16px;display: none;width:100%;">
+        For best experience, switch your browser's resolution to 1920x1080.<br>
+        For 1366x768 users, zoom out the browser to 67%.<br>
+        <button id="but-enter" style="background-color:transparent;border:0px solid black;font-weight:bolder">Enter Site</button>
+        <p>
+          © Kashiyatra, IIT (BHU), Varanasi
+        </p>
+        </div>
+    </div>
+    <script type="text/javascript">
+      $(function(){
+        $('#but-enter').on('click',function(){
+          $('.spn_hol').fadeOut(1000);
+        });
+      });
+    </script>
+ <!-- END PRELOADER -->
+
+ <!-- =========================
+     START ABOUT US SECTION
+============================== -->
+    <section class="header parallax home-parallax page image-responsive img-responsive" id="HOME" src="/static/images/KY_Web_Beta_Landing_5.jpg">
+        <h2></h2>
+<!--
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav-opacity" style="margin-top: 0px; opacity: 0 ; background-color: transparent"> -->
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                            <!--nav_logo_image-->
+
+
+
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                    <!-- /.navbar-collapse -->
+
+                <!-- /.container- -->
+            </nav>
+
+
+        <div class="container home-container" id="container-home">
+    <div style="position:absolute;top:0;left:0;width:25%;max-height:40%;">
+      <img src="/static/images/KY_Web_Top_Left.png" style="width:90%;height:90%" class="LeftsideKYimage img-responsive" style="/*margin-left: -79%;*/position: absolute;
+      left: 0%;top: 0%;">
+    </div>
+   <div style="position:absolute;top:8%;left:35%;width:30%;height:30%; ">
+     <img src="/static/images/KY_Web_Center.png" style="position:absolute;left:25%;width:auto;height:100%;" class="CentersideKYimage img-responsive;transform:scale(0.5,0.5);" >
+   </div>
+           <div id="clock" >
+
+             <table id="table" border="0" style="width: 24%;height: 12%;">
+             <tr>
+               <td align="center" colspan="6"><div class="numbers" id="count2" style="display:none; "></div></td>
+           </tr>
+           <tr id="spacer1">
+               <td align="center" ><div class="numbers" id="dday"></div></td>
+               <td align="center" ><div class="numbers" id="dhour"></div></td>
+               <td align="center" ><div class="numbers" id="dmin"></div></td>
+               <td align="center" ><div class="numbers" id="dsec"></div></td>
+
+           </tr>
+           <tr id="spacer2">
+
+               <td align="center" ><div class="title" id="days">DD</div></td>
+               <td align="center" ><div class="title" id="hours">HH</div></td>
+               <td align="center" ><div class="title" id="minutes">MM</div></td>
+               <td align="center" ><div class="title" id="seconds">SS</div></td>
+
+           </tr>
+       </table>
+
+       <script src="/static/js/abhiindex.js" charset="utf-8"></script>
+       </div>
+       <div id="ky-video" style="background:transparent;position:absolute;left:4%;top:70%;width:18%;height:17%;">
+<img src="/static/images/KY_Web_Beta_Teaser.png" id="ky_teaser" class="teaser-logo img-responsive" style="width:100%;height:auto;">
+       </div>
+       <div>
+         <button id="but3-form" class="btn btn-default" style="display:none;position: absolute; left: 87.48%;top: 2.4%;z-index: 102;width: 2.5%;height: 5%;">
+            <span class="fa fa-times" style="">
+
+            </span>
+         </button>
+       </div>
+<div style="position:absolute;top:40%;left:25%;width:50%;height:50%;">
+  <img src="/static/images/KY_Web_Beta_KY.png" class="kashiyatra_logo img-responsive" style="margin-top:-5%;margin-left:0;width:100%;height:auto;" >
+      <a href="/form" class="register _selecter" target="_blank">
+      <img src="/static/images/Register_Button last.png" class="register_image img-responsive" style="margin-top: -4%;width:95%;height:auto;">
+      </a>
+</div>
+<div style="position:absolute;bottom:0%;right:0;width:25%;height:auto;overflow:hidden; ">
+  <img src="/static/images/KY_Web_Bottom_Right.png" style="width:90%;height:90%;float:right; bottom :0;right:0;" class="RightsideKYimage img-responsive" style="display:block">
+
+                   </div>
+        {% if request.user.is_authenticated  %}
+
+                   <div style="position:absolute;top: 0%;left: 73%;width: 23%;height: 23%;color:black;">
+                     <div style="position:absolute; top:75%;width:100%;height:15%;"><p style="text-align:center;font-size:32px;top:20%;color:#8b344f;">
+                                       Welcome {{request.user.first_name}}</p><span id="profile-left"></span>
+                  </div>
+
+                  <div  style="position:absolute;right:0%;width:80%;height:17%;text-align:center;left:50%;">
+                  <a href="/profile" class="btn btn-link" id="profile-but" style="position:absolute;right:60%;font-size:20px;color:#8b344f;text-align:center;">View Profile</a>
+
+               <span id="logout-left"></span><a href="/logout" class="btn btn-link" id="logout-but" style="font-size:20px;color:#8b344f;text-align:center;">Logout</a>
+                                  </div>
+                {% if request.user.kyprofile.is_ca == False %}
+                </div>
+              <button href="/ca-register" type="btn btn-default btn-lg btn-sharp" id="campus-amb" style="border:transparent;background-color: #8b344f;color:white;top: 23%;right: 4%;position: absolute;width: 23%;height: 50px;">
+<a href="/ca-register" style="font-size:24px;color:white;">
+  Register as Campus Ambassador
+</a>
+              </button>
+                {% endif %}
+          {% endif %}
+    </section>
+
+
+<center>
+        <script src="/static/js1/index.js"></script></center>
+    <!-- END HEADER SECTION -->
+
+
+
+
+ <!-- =========================
+     START ABOUT US SECTION
+============================== -->
+
+<a name="about" class="s1"></a>
+    <section class="about page" id="ABOUT">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <!-- ABOUT US SECTION TITLE-->
+                    <div class="section_title">
+                        <h2>About Us</h2>
+                        <p style="font-weight:300;">KY is to zest and zeal, it is to capturing emotions and magical moments, creating happy memories and surrounding ourselves with the alluring fragrance of bliss. It is where your hidden talents, quite different from your forte of being intellectual, get a platform and we help by your soul to breath freely through an alluring journey of music,dance and drama. Kashiyatra is a spectacle-the culmination of months of hard work, actualization of goals and the acknowledgement of successes acheived, it is when at IIT BHU the tranquil evenings are emblazoned with a vibgyor of talents on this proscenium.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- End About Us -->
+
+
+
+
+
+ <!-- =========================
+     START TESTIMONIAL SECTION
+============================== -->
+<a name="testimony"></a>
+    <section id="TESTIxNIAL" class="testimonial parallax">
+        <div class="section_overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 wow bounceInDown">
+                        <div id="carousel-example-caption-testimonial" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-caption-testimonial" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-caption-testimonial" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-caption-testimonial" data-slide-to="2"></li>
+                                <li data-target="#carousel-example-caption-testimonial" data-slide-to="2"></li>
+                                <li data-target="#carousel-example-caption-testimonial" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <!-- IMAGE -->
+                                                <img src="/static/images/Astitva.jpg" alt="" class="testimonial_picture">
+                                                <div class="testimonial_caption">
+                                                   <!-- DESCRIPTION -->
+                                                    <h2>ASTITVA BAND</h2>
+
+                                                    <p>“Amazing Show! We were thrilled by the response we received here at Kashiyatra.<br/>Would love to come back and perform!.”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                 <!-- IMAGE -->
+                                                <img src="/static/images/nikhil.jpg" alt="" class="testimonial_picture">
+                                                <div class="testimonial_caption">
+                                                <!-- DESCRIPTION -->
+                                                    <h2>NIKHIL D'SOUZA</h2>
+                                                    <p>“I will perform here day in and day out.”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <!-- IMAGE -->
+                                                <img src="/static/images/Anish_Sood_3.jpg" alt="" class="testimonial_picture">
+                                                <div class="testimonial_caption">
+                                                <!-- DESCRIPTION -->
+                                                    <h2>ANISH SOOD</h2>
+                                                    <p>“Most enthusiastic crowd ever seen.Simply rocking!!”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                 <!-- IMAGE -->
+                                                <img src="/static/images/1Keerthi-Sagathia-1.jpg" alt="" class="testimonial_picture">
+                                                <div class="testimonial_caption">
+                                                <!-- DESCRIPTION -->
+                                                    <h2>KEERTHI SAGATHIYA</h2>
+                                                    <p>“Kashiyatra is more than amazing.<br/>Will cherish the moments.”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                 <!-- IMAGE -->
+                                                <img src="/static/images/palash.jpg" alt="" class="testimonial_picture">
+                                                <div class="testimonial_caption">
+                                                <!-- DESCRIPTION -->
+                                                    <h2>PALASH SEN,EUPHORIA</h2>
+                                                    <p>“You gave us one of the best nights of our career.”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- END TESTIMONIAL SECTION -->
+
+
+
+<!-- =========================
+     Photogallery
+============================== -->
+<a name="photogallery"></a>
+
+    <section id="features" class="features page">
+    <div class="container" style="width:100%;">
+
+                   <div class="section_title"><center> <h2>PHOTO GALLERY</h2></center></div>
+
+      <div id="canvas">
+
+
+
+
+        <center>
+
+        <div id="nav">
+
+        <button class="button" id="but1" onclick="document.getElementById('1').src='/static/images/new/DSC_0081.jpg',document.getElementById('2').src='/static/images/new/DSC_0130.jpg',document.getElementById('3').src='/static/images/new/IMG_0051.jpg',document.getElementById('4').src='/static/images/new/IMG_0259.jpg',document.getElementById('5').src='/static/images/new/IMG_0484.jpg',document.getElementById('6').src='/static/images/new/IMG_0695.jpg',document.getElementById('7').src='/static/images/new/IMG_1105.jpg',document.getElementById('8').src='/static/images/new/IMG_5089.jpg'">ALL</button>
+
+
+        <button  class="button" id="name1" onclick="document.getElementById('1').src='/static/images/EVENT1.jpg',document.getElementById('2').src='/static/images/EVENT2.jpg',document.getElementById('3').src='/static/images/EVENT3.jpg',document.getElementById('4').src='/static/images/EVENT4.jpg',document.getElementById('5').src='/static/images/EVENT5.jpg',document.getElementById('6').src='/static/images/all/IMG_5660.jpg',document.getElementById('7').src='/static/images/EVENT7.jpg',document.getElementById('8').src='/static/images/all/IMG_4462.jpg'">EVENTS</button>
+
+
+        <button   class="button" id="name2" onclick="document.getElementById('1').src='/static/images/PRO1.jpg',document.getElementById('2').src='/static/images/PRO2.jpg',document.getElementById('3').src='/static/images/all/DSC_1333.jpg',document.getElementById('4').src='/static/images/PRO4.jpg',document.getElementById('5').src='/static/images/PRO5.jpg',document.getElementById('6').src='/static/images/PRO6.jpg',document.getElementById('7').src='/static/images/PRO7.jpg',document.getElementById('8').src='/static/images/all/IMG_0525.jpg'">PRONITES</button>
+
+        </div>
+        <br><br>
+        </center>
+        <center>
+
+        <div  id="wid">
+
+        <div   class="thumbf">
+
+        <img  src="/static/images/new/DSC_0081.jpg" class="classyimage" id="1"></div>
+
+        <div   class="thumbf">
+
+        <img src="/static/images/new/DSC_0130.jpg" class="classyimage" id="2"></div>
+
+        <div   class="thumbf">
+
+        <img  src="/static/images/new/IMG_0051.jpg" class="classyimage" id="3" ></div>
+
+        <div   class="thumbf">
+
+        <img src="/static/images/new/IMG_0259.jpg" class="classyimage" id="4" ></div>
+
+        <div   class="thumbf">
+
+        <img src="/static/images/new/IMG_0484.jpg" class="classyimage" id="5" ></div>
+
+        <div   class="thumbf">
+
+        <img  src="/static/images/new/IMG_0695.jpg" class="classyimage" id="6" ></div>
+
+        <div   class="thumbf">
+
+        <img  src="/static/images/new/IMG_1105.jpg" class="classyimage" id="7" ></div>
+
+        <div   class="thumbf">
+
+        <img src="/static/images/new/IMG_5089.jpg" class="classyimage" id="8" ></div>
+
+
+        </div>
+        </div>
+        </center>
+        </div>
+        </div>
+    </section>
+
+
+
+
+
+
+<!-- =========================
+     START CONTCT FORM AREA
+============================== -->
+
+
+
+<a name="contact"></a>
+    <section class="contact page" id="CONTACT">
+        <div class="section_overlay" style="background-color:#8b344f;">
+            <div class="container">
+                <div class="col-md-10 col-md-offset-1 wow bounceIn">
+                    <!-- Start Contact Section Title-->
+                    <div class="section_title">
+                        <h2 class="Get in touch" style="color:white;">Get in touch</h2>
+                        <p style="color:white;">Feel free to drop in your queries here. We're here to help.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact_form wow bounceIn" style="padding-bottom:4%;">
+                <div class="container">
+
+                <!-- START ERROR AND SUCCESS MESSAGE -->
+                    <div class="form_error text-center">
+                        <div class="name_error hide error">Please Enter your name</div>
+                        <div class="email_error hide error">Please Enter your Email</div>
+                        <div class="email_val_error hide error">Please Enter a Valid Email Address</div>
+                        <div class="message_error hide error">Please Enter Your Message</div>
+                    </div>
+                    <div class="Sucess" id="sucess-msg" style="display:none;">
+                      Message recorded!, we'll contact you soon.
+                                       </div>
+                <!-- END ERROR AND SUCCESS MESSAGE -->
+
+                <!-- FORM -->
+                    <form action="/messages/" method="post" id="msg-form" name="queries">
+                      {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" required="true" id="name" placeholder="Name" name="name">
+                                <input type="email" class="form-control" required="true" id="email" placeholder="Email" name="email">
+                                <input type="text" class="form-control" required="true" id="subject" placeholder="Subject" name="subject">
+                            </div>
+                            <div class="col-md-8">
+                                <textarea class="form-control" required="true" id="message" rows="25" cols="10" placeholder="  Message Texts..." name="message"></textarea>
+                                <button type="submit"  class="btn btn-default" style="width: 100%;height: 50px;">SEND MESSAGE</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM -->
+
+                    <script>
+  function query()
+  {
+    document.getElementById("sucess-msg").style.display="block";
+    document.queries.reset();
+  }
+
+
+function msg_sent(){
+  $.ajax({
+    url : "/messages/",
+    type : "POST",
+    dataType : "json",
+    data : { name : $('#name').val(),
+              email : $('#email').val(),
+              subject: $('#subject').val(),
+              msg : $('#message').val(),
+  },
+
+    success : function(json){
+
+    },
+    error : function(xhr, errmsg, err){
+      console.log(xhr.status + " : " + xhr.responseText);
+    }
+  });
+};
+
+                    </script>
+                    <script src="static/js/jquery.min.js" charset="utf-8"></script>
+                                        <script>
+                                        $('#msg-form').on('submit', function(event){
+                                            event.preventDefault();
+                                            msg_sent();
+                                            query();
+
+                                        });
+                      </script>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <!-- END CONTACT -->
+
+
+    <!-- END SUBSCRIPBE FORM -->
+	<a name="sponsors"></a>
+     <section class="apps_screen page" id="SCREENS">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 wow fadeInBig" data-wow-duration="1s">
+                        <!-- APPS SCREEN TITLE -->
+                        <div class="section_title">
+                            <h2>Sponsors</h2>
+
+                        </div>
+                        <!-- END APPS SCREEN TITLE -->
+                    </div>
+                </div>
+            </div>
+<div class="body">
+    <center>
+        <div id="logos">
+            <img id="sp" src="/static/images/hero.png">
+
+            <img id="sp" src="/static/images/nba jam.jpg">
+            <img id="sp" src="/static/images/denever.jpg">
+
+            <img id="sp" src="/static/images/msm.jpg">
+
+            <img id="sp" src="/static/images/lenevo.png">
+
+            <img id="sp" src="/static/images/zindagi.png">
+            <img id="sp" src="/static/images/holiday.jpg">
+            <img id="sp" src="/static/images/pfc.jpg">
+        </div>
+    </center>
+    <center>
+        <div id="logos">
+
+            <img id="sp" src="/static/images/ims.jpg">
+            <img id="sp" src="/static/images/hiphop.jpg">
+            <img id="sp" src="/static/images/hp.png">
+            <img id="sp" src="/static/images/iffco.jpg">
+            <img id="sp" src="/static/images/him.png">
+            <img id="sp" src="/static/images/max.png">
+            <img id="sp" src="/static/images/safe.jpg">
+            <img id="sp" src="/static/images/ebay.png">
+            <img id="sp" src="/static/images/askme.jpg">
+
+            <img id="sp" src="/static/images/sagar.png">
+
+            <img id="sp" src="/static/images/spykar.png">
+            <img id="sp" src="/static/images/spartan.png">
+            <img id="sp" src="/static/images/time.jpg">
+
+        </div>
+
+    </center>
+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ENS APPS SCREEN -->
+
+
+<!-- =========================
+     FOOTER
+============================== -->
+
+    <section class="copyright">
+
+        <div class="copy_right_text">
+                    <!-- COPYRIGHT TEXT -->
+
+
+
+
+                       <p class="footer_content" >
+                       <span id="copyright_Title"><b>©</b> IIT (BHU) VARANASI - Beta<br/><br/>Indian Institute of Technology (BHU), Varanasi, Lanka, Varanasi - 221005</span>
+                       <span id="sponsoredBy" >kashiyatra@iitbhu.ac.in<br/><br/>
+
+                        <a href="https://www.facebook.com/kashiyatra.IITBHU/" class="shr_link_ctnt">FACEBOOK</a> - <a href="https://twitter.com/Kashiyatra.IITBHU/" class="shr_link_ctnt">TWITTER</a> - <a href="https://www.instagram.com/kashiyatra_iitbhu/" class="shr_link_ctnt" >INSTAGRAM</a> - <a href="https://www.youtube.com/channel/UCJQCjxqqxdM3JlvKericaog" class="shr_link_ctnt" >YOUTUBE
+                        <p id="share_token"></p>
+
+                        </span>
+                        </p>
+                    </div>
+
+
+        </div>
+		 </section>
+    <!-- END FOOTER
+
+
+<!-- =========================
+     SCRIPTS
+============================== -->
+
+
+    <script src="/static/js/owl.carousel.js"></script>
+    <script src="/static/js/jquery.fitvids.js"></script>
+    <script src="/static/js/smoothscroll.js"></script>
+    <script src="/static/js/jquery.parallax-1.1.3.js"></script>
+    <script src="/static/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/static/js/jquery.ajaxchimp.langs.js"></script>
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/waypoints.min.js"></script>
+    <script src="/static/js/jquery.counterup.min.js"></script>
+    <script src="/static/js/script.js"></script>
+<script>
+
+        $(document).ready(function(){
+            $("#ky_teaser").on('click',function(){
+                console.log("hey");
+                $("#container-home").append('<video class="teaser-video" height="100%" width="80%" id="ky-video" style="position: absolute;left: 10%;top: 0px;z-index: 100;" controls>  <source src="/static/video/TeaserKY17.mp4" type="video/mp4"></video>');
+                $('#but3-form').css("display","block");
+                $(this).css("display","none");
+            });
+            $('#but3-form').on('click',function(){
+                $('.teaser-video').remove();
+                $("#ky_teaser").css("display","block");
+            });
+        });
+
+        $(function(){
+            $('#but1').on('click',function(){
+                $('#1').fadeOut(600).fadeIn(1200);
+                $('#2').fadeOut(1200).fadeIn(600);
+                $('#3').fadeOut(1200).fadeIn(600);
+                $('#4').fadeOut(600).fadeIn(1200);
+                $('#5').fadeOut(600).fadeIn(1200);
+                $('#6').fadeOut(1200).fadeIn(600);
+                $('#7').fadeOut(1200).fadeIn(600);
+                $('#8').fadeOut(600).fadeIn(1200);
+
+            });
+            $('#but2').on('click',function(){
+                $('#1').fadeOut(600).fadeIn(1200);
+                $('#2').fadeOut(1200).fadeIn(600);
+                $('#3').fadeOut(1200).fadeIn(600);
+                $('#4').fadeOut(600).fadeIn(1200);
+                $('#5').fadeOut(600).fadeIn(1200);
+                $('#6').fadeOut(1200).fadeIn(600);
+                $('#7').fadeOut(1200).fadeIn(600);
+                $('#8').fadeOut(600).fadeIn(1200);
+
+            });
+$('#name1').on('click',function(){
+                $('#1').fadeOut(600).fadeIn(1200);
+                $('#2').fadeOut(1200).fadeIn(600);
+                $('#3').fadeOut(1200).fadeIn(600);
+                $('#4').fadeOut(600).fadeIn(1200);
+                $('#5').fadeOut(600).fadeIn(1200);
+                $('#6').fadeOut(1200).fadeIn(600);
+                $('#7').fadeOut(1200).fadeIn(600);
+                $('#8').fadeOut(600).fadeIn(1200);
+
+            });
+$('#name2').on('click',function(){
+                $('#1').fadeOut(600).fadeIn(1200);
+                $('#2').fadeOut(1200).fadeIn(600);
+                $('#3').fadeOut(1200).fadeIn(600);
+                $('#4').fadeOut(600).fadeIn(1200);
+                $('#5').fadeOut(600).fadeIn(1200);
+                $('#6').fadeOut(1200).fadeIn(600);
+                $('#7').fadeOut(1200).fadeIn(600);
+                $('#8').fadeOut(600).fadeIn(1200);
+
+            });
+
+
+
+
+
+        });
+        $(function(){
+            $('#1').on('mouseover',function(){
+                $(this).fadeout(3000);
+            });
+            $('#but1').css({backgroundColor:'#ED9121'});
+        });
+        $(function(){
+            $('#but1').on('click',function(){
+                $(this).css({backgroundColor:'#ED9121'});
+                $('#name1').css({backgroundColor:'transparent'});
+                $('#name2').css({backgroundColor:'transparent'});
+                $('#but2').css({backgroundColor:'transparent'});
+            });
+            $('#name1').on('click',function(){
+                $(this).css({backgroundColor:'#ED9121'});
+                $('#but1').css({backgroundColor:'transparent'});
+                $('#name2').css({backgroundColor:'transparent'});
+                $('#but2').css({backgroundColor:'transparent'});
+            });
+            $('#name2').on('click',function(){
+                $(this).css({backgroundColor:'#ED9121'});
+                $('#name1').css({backgroundColor:'transparent'});
+                $('#but1').css({backgroundColor:'transparent'});
+                $('#but2').css({backgroundColor:'transparent'});
+            });
+            $('#but2').on('click',function(){
+                $(this).css({backgroundColor:'#ED9121'});
+                $('#but1').css({backgroundColor:'transparent'});
+                $('#name2').css({backgroundColor:'transparent'});
+                $('#name1').css({backgroundColor:'transparent'});
+            });
+
+        });
+$(document).ready(function()
+{
+
+    $(".CentersideKYimage").fadeIn(3000);
+    $(".register_image").fadeIn(3000,function(){
+    $("#ky_teaser").fadeIn(2000);
+
+    });
+
+});
+
+
+// $(function(){
+//     var current=0;
+//     var x='margin-left';
+//     var interval;
+//     function startslider(){
+//     interval=setInterval(function(){
+
+//             $(".RightsideKYimage").animate({'margin-left':'+950px'}, 2000);
+//              $(".LeftsideKYimage").animate({'margin-left':'18%'}, 2000);
+
+// },0)
+// }
+
+// startslider();
+// });
+
+
+$(document).ready(function(){
+
+     $('#but3-form').on('click',function(){
+        $(this).css({"display":"none"});
+         $('.teaser-video').remove();
+     }) ;
+
+ });
+</script>
+</body>
+</html>

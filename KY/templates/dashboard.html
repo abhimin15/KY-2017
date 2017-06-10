@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <!-- <link rel="stylesheet" href="/static/css/bootstrap.min.css"> -->
+
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    </head>
+<style>
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+a:link{
+  text-decoration: none;
+}
+</style>
+
+  <body>
+    <div class="row" style="width:100%;">
+      <div class="container">
+
+    <nav id="accordion1" class="navbar navbar-default navbar-fixed-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                     <a href="/" class="navbar-brand">Kashiyatra 2017</a>
+
+                </div>
+                <div id="navbar" class="navbar-collapse collapse" >
+                    <ul class="menu nav navbar-nav pull-right list-inline" style="margin-right:11%;margin-top:0.5%">
+                      {% if choosen == False %}
+                      <li>
+                          <a href="/ca-register"><i class="fa fa-user"></i> Become Campus Ambassador</a>
+                      </li>
+                      {% endif %}
+
+
+                            <li>
+
+                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <i class="fa fa-cog"></i> Settings
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li role="separator" class="divider"></li>
+
+                                <li>
+                                  <a href="{% url 'kyusers:profile' %}"><i class="fa fa-user"></i> View profile</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                  <a href="{% url 'kyusers:changePass' %}"><i class="fa fa-key"></i> Change Password</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="{% url 'kyusers:logout' %}"><i class="fa fa-power-off"></i> Log out</a>
+                                </li>
+                              </ul>
+                          </li>
+                    </ul>
+                </div>
+
+        </nav>
+<br><br><br>
+ <div class="col-md-3" id="Cat">
+   <br><br>
+   <div class="panel panel-default" id="task-panel">
+     <div class="panel-heading"><strong></strong></div>
+       <div class="list-group tasks">
+         <a class="list-group-item active" href="/dashboard">
+           See your Registrations
+         </a>
+        <a class="list-group-item" href="/events">
+          Events
+        </a>
+            <a class="list-group-item" href="/contingent">
+              Contingent Registration</a>
+   </div>
+         </div>
+       </div>
+       <br>
+       <br>
+         <div class="col-md-7">
+
+             <h4>Team Registrations:</h4>
+            {% if memTeams.count == 0%}
+            No Registrations yet. <br><br>
+            {% endif %}
+             <div class="panel-group" id="accordion">
+               {% for team in memTeams %}
+               <div class="panel panel-default">
+                 <div class="panel-heading">
+                   <h4 class="panel-title">
+                     <a data-toggle="collapse"  data-parent="#accordion" href="#collapse{{forloop.counter}}">{{ team.event.eventName }}</a>
+                   </h4>
+                 </div>
+                 <div id="collapse{{forloop.counter}}" class="panel-collapse collapse">
+                   <div class="panel-body">
+                   <div class="list-group tasks">
+                    <a class="list-group-item ">
+                      Team Name : {{ team.teamName }}
+                    </a>
+                    <a class="list-group-item ">
+                      Team Leader : {{ team.teamLeader }}
+                    </a>
+                    {% for member in team.members.all %}
+                    <a class="list-group-item ">
+                      Member : {{ member }}
+                    </a>
+                    {%endfor %}
+                    <br>
+                    <button type="button" class=" pull-right btn btn-danger" name="button" id="{{team.teamId}}" onclick="dereg(this)">Deregister from this team</button>
+               </div>
+                   </div>
+                 </div>
+               </div>
+            <br><br>
+        {%endfor%}
+        <h4>Individual Registrations:</h4>
+        {% if indTeams.count == 0 %}
+        No Registrations yet. <br><br>
+        {% endif %}
+        <div class="panel-group" id="accordion">
+          {% for team in indTeams %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"  style="margin-bottom:1%;">
+                {{ team.event.eventName }}
+                <span class="pull-right"  >
+                <button type="button" class="btn btn-danger btn-xs " id="{{team.teamId}}" name="button" onclick="dereg(this)">Deregister</button>
+              </span>
+              </h4>
+            </div>
+
+          </div>
+
+          {% endfor %}
+          <br>
+          <br>
+
+</div>
+
+         </div>
+       </div>
+
+ </div>
+
+     <script src="/static/js/jquery.min.js"></script>
+     <!-- <script src="/static/js/events.js"></script> -->
+     <script src="/static/js/bootstrap.min.js"></script>
+<script>
+
+function dereg(elem){
+  teamId = elem.getAttribute("id");
+  console.log(teamId);
+  var kyId = "{{request.user.kyprofile.kyId}}";
+$.ajax({
+  url : '/deregister/',
+  type: 'POST',
+  dataType: 'json',
+  data: {'teamId': teamId,
+          'kyId' : kyId,
+         'csrfmiddlewaretoken': '{{ csrf_token }}', },
+  context: elem,
+  success: function(data) {
+          console.log(data['status']);
+          if(data['status'] == 'deregistered'){
+
+            $(elem).removeClass('btn-danger').addClass('btn-success');
+            $(elem).html("DeRegistered!");
+          }
+        }
+})
+.done(function() {
+  console.log("success");
+
+
+})
+.fail(function() {
+  console.log("error");
+})
+.always(function() {
+  console.log("complete");
+});
+}
+
+</script>
+</script>
+
+</body>
+</html>
